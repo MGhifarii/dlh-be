@@ -47,9 +47,22 @@ const dbConfig = require('../config/config');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+
 const db = {};
 db.mongoose = mongoose;
-db.url = dbConfig.url;
+db.url = process.env.MDB_CONNECT;
 db.tps = require('./tpsModel.js')(mongoose);
 
 module.exports = db;
+
+// mongoose.connect(
+//     process.env.MDB_CONNECT,
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     },
+//     (err) => {
+//       if (err) return console.error(err);
+//       console.log(`MongoDB connected: `);
+//     }
+//   );
