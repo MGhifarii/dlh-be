@@ -89,7 +89,9 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
 app.use(errorHandler);
 
+
 // connect to mongoDB
+mongoose.set('strictQuery', true);
 mongoose.connect(
   process.env.MDB_CONNECT,
   {
